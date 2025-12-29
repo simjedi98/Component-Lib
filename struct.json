@@ -1,0 +1,43 @@
+{
+    "framework": "nuxt",
+    "pages": [
+        {
+            "name": "index",
+            "structure": [
+                {"component": "hero"},
+                {"component": "info-block"},
+                {"component": "pricing-block"}
+            ]
+        }
+    ],
+    "layouts": [
+        {
+            "name": "default",
+            "structure": [
+                {"component": 
+                    {
+                        "type": "header",
+                        "name": "default"
+                    }
+                },
+                {"component": {
+                        "type": "slot",
+                        "name": "default"
+                    }
+                },
+                {"component": {
+                        "type": "footer",
+                        "name": "default"
+                    }
+                }
+            ]
+        }
+    ],
+    "components": [
+        {
+            "standard-btn": {
+                
+            }
+        }
+    ]
+}

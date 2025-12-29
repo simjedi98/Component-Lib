@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@layer components {
+    .font-nano {
+        @apply text-[6px] leading-3
+    }
+
+    .font-micro {
+        @apply text-[8px] leading-3.5
+    }
+
+    .font-small {
+        @apply text-[10px] leading-4
+    }
+
+    .font-xs {
+        @apply text-xs leading-4.5
+    }
+
+    .font-sm {
+        @apply text-sm leading-5
+    }
+
+    .font-base {
+        @apply text-base leading-5.5
+    }
+
+    .font-xl {
+        @apply text-xl leading-6.5
+    }
+
+    .font-2xl {
+        @apply text-2xl leading-7.5
+    }
+
+    .font-3xl {
+        @apply text-[32px] leading-9.5
+    }
+
+    .font-4xl {
+        @apply text-[40px] leading-11.5
+    }
+
+    .font-5xl {
+        @apply text-[54px] leading-15
+    }
+
+    .font-6xl {
+        @apply text-6xl leading-16.5
+    }
+
+    .font-7xl {
+        @apply text-7xl leading-19.5
+    }
+
+    .font-8xl {
+        @apply text-[80px] leading-21.5
+    }
+
+    .font-9xl {
+        @apply text-8xl leading-25.5
+    }
+}
