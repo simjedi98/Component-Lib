@@ -11,7 +11,7 @@
         classes: ''
     });
 
-    const baseClasses = 'relative text-base text-black font-normal';
+    const baseClasses = 'relative text-base md:text-xl lg:text-xl text-black dark:text-white font-normal';
 
     const mergedClasses =  twMerge(baseClasses, props.classes);
 
