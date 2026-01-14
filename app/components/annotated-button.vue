@@ -22,6 +22,7 @@
         annotation_border_width?: string, //specify border width of marker block
         annotation_width?: string, //specify width of marker
         annotation_height?: string //specify height of marker
+        annotation_reverse?: boolean //specify the order of annotation
     }>(),{
         value: 'button',
         position: 'relative',
@@ -52,7 +53,7 @@
 
 <template>
     <component :is="props.as" :class="joinedrootClasses" @mouseenter="onhoveron" @mouseleave="onhoveroff" >
-        <AnnotatedText align="items-center" :text_classes="props.text_classes" text_as="p" :text_value="props.value" :marker_path="props.annotation_path" :marker_padding="props.annotation_padding" :marker_background="props.annotation_background" :marker_border_radius="props.annotation_border_radius" :marker_border_color="props.annotation_border_color" :marker_border_width="props.annotation_border_width" :marker_width="props.annotation_width" :marker_height="props.annotation_height" width="w-full" />
+        <AnnotatedText align="items-center" :reverse="props.annotation_reverse" :text_classes="props.text_classes" text_as="p" :text_value="props.value" :marker_path="props.annotation_path" :marker_padding="props.annotation_padding" :marker_background="props.annotation_background" :marker_border_radius="props.annotation_border_radius" :marker_border_color="props.annotation_border_color" :marker_border_width="props.annotation_border_width" :marker_width="props.annotation_width" :marker_height="props.annotation_height" width="w-full" />
     </component>
 </template>
 

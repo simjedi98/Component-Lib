@@ -18,7 +18,8 @@
         padding?: string, // specify padding around annotation block
         align?: 'items-start' | 'items-end' | 'items-end-safe' | 'items-center' | 'items-center-safe' | 'items-baseline' | 'items-baseline-last' | 'items-stretch', //specify how to align child blocks 
         gap?: string, // specify gap size
-        width?: string // specify block width
+        width?: string, // specify block width
+        reverse?: boolean // specify to reverse the order of annotation
     }>(),{
         text_value: 'Camel Toe',
         text_as: 'p',
@@ -36,7 +37,8 @@
         padding: 'p-0',
         align: 'items-baseline',
         gap: 'gap-2',
-        width: 'w-fit'
+        width: 'w-fit',
+        reverse: false
     });
 
     const rootClasses = 'flex';
@@ -46,10 +48,11 @@
 
 <template>
     <div :class="joinedrootClasses">
-        <MarkerAffix :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
+        <MarkerAffix v-if="!props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
         <div>
             <HeadingText :label="props.text_value" :as="props.text_as" :classes="props.text_classes"/>
         </div>
+        <MarkerAffix v-if="props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
     </div>
 </template>
 
