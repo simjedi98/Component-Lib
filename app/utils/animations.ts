@@ -1,22 +1,40 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 export class tweens {
-    static scrolleffect(selector: any, trigger: string, target: string, start: string) {
+    static deltax_std(selector: any, target: string, dt: number) {
         return gsap.to(selector.value, {
-            scrollTrigger: {
-                trigger: trigger,
-                scroller: '.page-wrapper',
-                start: start,
-                end: start,
-                toggleActions: "play none reverse none"
-            },
             dx: target,
-            duration: 1,
-            stagger: 0.3,
+            duration: dt,
             ease: "power2.out"
-        })
+        });
+    }
+
+    static changealpha_std(selector: any, target: number, dt: number) {
+        return gsap.to(selector.value, {
+            opacity: target,
+            duration: dt,
+            ease: "power2.out"
+        });
+    }
+
+    static changeaccent_std(selector: any, target: string, dt: number) {
+        return gsap.to(selector.value, {
+            accent: target,
+            duration: dt,
+            ease: "power2.out"
+        });
+    }
+}
+
+export class timelines {
+    static default_timeline() {
+        const tl = gsap.timeline({paused: true});
+
+        return tl;
     }
 }
