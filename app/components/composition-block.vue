@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { twJoin, twMerge } from 'tailwind-merge';
+
     const props = withDefaults(defineProps<{
         heading_value?: string|null, // text value to be rendered as heading
         heading_as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h7', //html element that heading text can be rendered as
@@ -48,7 +49,7 @@
 <template>
     <div :class="joinedrootClasses">
         <div :class="mergedheadingWrapperClass" v-if="props.heading_value">
-            <HeadingText :classes="mergedheadingClasses" :label="props.heading_value" />
+            <TextBlock :classes="mergedheadingClasses" :label="props.heading_value" />
         </div>
         <div :class="mergedbodyWrapperClass">
             <RichText :color="props.content_color" :font_weight="props.content_font_weight" :font_size="props.content_font_size" :font_family="props.content_font_family" :padding="props.content_padding" :align="props.content_alignment" >

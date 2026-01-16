@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { twJoin } from 'tailwind-merge';
 
+
     const props = withDefaults(defineProps<{
         text_value?: string, // text value to be rendered
         text_classes?: string // tailwind utility for styling text-block
@@ -50,7 +51,7 @@
     <div :class="joinedrootClasses">
         <MarkerAffix v-if="!props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
         <div>
-            <HeadingText :label="props.text_value" :as="props.text_as" :classes="props.text_classes"/>
+            <TextBlock :label="props.text_value" :as="props.text_as" :classes="props.text_classes"/>
         </div>
         <MarkerAffix v-if="props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
     </div>

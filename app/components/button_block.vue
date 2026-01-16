@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { twJoin } from 'tailwind-merge';
 
+
     const props = withDefaults(defineProps<{
         value?: string, // text value to be rendered
         position?: 'relative'|'absolute'|'fixed'|'static'|'sticky', //specify which utility class for controlling how block is positioned
@@ -44,7 +45,7 @@
 
 <template>
     <component :is="props.as" :class="joinedrootClasses" @mouseenter="onhoveron" @mouseleave="onhoveroff" >
-        <HeadingText :classes="props.text_classes" :label="props.value" />
+        <TextBlock :classes="props.text_classes" :label="props.value" />
     </component>
 </template>
 

@@ -45,10 +45,10 @@
 <template>
     <div :class="joinedrootClasses">
         <div :class="mergedheadingWrapperClass" v-if="props.heading_value">
-            <HeadingText :classes="mergedheadingClasses" :as="props.heading_as" :label="props.heading_value" />
+            <TextBlock :classes="mergedheadingClasses" :as="props.heading_as" :label="props.heading_value" />
         </div>
         <div :class="mergedbodyWrapperClass" v-if="props.summary_value">
-            <HeadingText :classes="mergedsummaryClasses" :label="props.summary_value" />
+            <TextBlock :classes="mergedsummaryClasses" :label="props.summary_value" />
         </div>
     </div>
 </template>
