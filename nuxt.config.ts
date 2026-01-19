@@ -17,5 +17,5 @@ export default defineNuxtConfig({
     transpile: ['gsap']
   },
 
-  modules: ['@nuxt/image', 'nuxt-svgo'],
+  modules: ['@nuxt/image', 'nuxt-svgo', '@vueuse/nuxt'],
 })

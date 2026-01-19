@@ -17,14 +17,14 @@
         annotation_block_alignment?: 'items-start'|'items-end'|'items-end-safe'|'items-center'|'items-center-safe'|'items-baseline'|'items-baseline-last'|'items-stretch',
         annotation_block_flex_direction?: 'flex-row'|'flex-row-reverse'|'flex-col'|'flex-col-reverse',
         annotation_block_reverse?: boolean, // specify the order of annotation
-        annotation_path?: string | null, // specify path to the marker intended for use, strongly recommend use of .svg to prevent unpredictable behavior
+        annotation_path?: string, // specify path to the marker intended for use, strongly recommend use of .svg to prevent unpredictable behavior
         annotation_padding?: string, //specify padding around marker
         annotation_background?: string, //specify background color of marker block
         annotation_border_radius?: string, //specify radius of marker block
         annotation_border_color?: string, //specify border color of marker block
         annotation_border_width?: string, //specify border width of marker block
-        annotation_width?: string, //specify width of marker
-        annotation_height?: string //specify height of marker
+        annotation_width?: number, //specify width of marker
+        annotation_height?: number //specify height of marker
     }>(), {
         heading_value: 'Annotated Summary Block',
         heading_as: 'h3',
@@ -40,14 +40,13 @@
         annotation_block_flex_direction: 'flex-row',
         annotation_block_alignment: 'items-center',
         annotation_block_reverse: false,
-        annotation_path: null,
         annotation_padding: 'p-0',
         annotation_background: 'bg-transparent',
         annotation_border_radius: 'rounded-full',
         annotation_border_color: 'border-transparent',
         annotation_border_width: 'border-0',
-        annotation_width: 'w-6',
-        annotation_height: 'h-6',
+        annotation_width: 24,
+        annotation_height: 24,
     });
 
     const rootClasses = 'flex';

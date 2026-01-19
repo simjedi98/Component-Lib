@@ -2,6 +2,7 @@
     import { twMerge } from 'tailwind-merge';
 
     const model = defineModel<boolean>();
+        
     const props = withDefaults(defineProps<{
         label?: string,
         position?: 'static'|'fixed'|'absolute'|'relative'|'sticky',

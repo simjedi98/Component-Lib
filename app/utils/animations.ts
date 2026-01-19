@@ -1,9 +1,11 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(MorphSVGPlugin);
 
 export class tweens {
     static deltax_std(selector: any, target: string, dt: number) {
@@ -25,6 +27,14 @@ export class tweens {
     static changeaccent_std(selector: any, target: string, dt: number) {
         return gsap.to(selector.value, {
             accent: target,
+            duration: dt,
+            ease: "power2.out"
+        });
+    }
+
+    static morphvector_std(selector: any, target: string, dt: number) {
+        return gsap.to(selector , {
+            morphSVG: target,
             duration: dt,
             ease: "power2.out"
         });

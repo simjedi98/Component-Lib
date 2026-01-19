@@ -1,59 +1,67 @@
 <script setup lang="ts">
     import { twJoin } from 'tailwind-merge';
 
+    type Vector = {
+        fill?: string,
+        stroke?: string,
+        strokeWidth?: number,
+        opacity?: number
+    }
 
     const props = withDefaults(defineProps<{
         text_value?: string, // text value to be rendered
-        text_classes?: string // tailwind utility for styling text-block
+        tw_text_classes?: string // tailwind utility for styling text-block
         text_as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div', // html tag text-block is rendered as
-        marker_path?: string | null, // specify path to the marker intended for use, strongly recommend use of .svg to prevent unpredictable behavior
-        marker_padding?: string, //specify padding around marker
-        marker_background?: string, //specify background color of marker block
-        marker_border_radius?: string, //specify radius of marker block
-        marker_border_color?: string, //specify border color of marker block
-        marker_border_width?: string, //specify border width of marker block
-        marker_width?: string, //specify width of marker
-        marker_height?: string, //specify height of marker
-        position?: 'relative'|'absolute'|'fixed'|'static'|'sticky', //specify which utility class for controlling how block is positioned for your use case.
-        flex_direction?: 'flex-row' | 'flex-row-reverse' | 'flex-col' | 'flex-col-reverse',
-        padding?: string, // specify padding around annotation block
-        align?: 'items-start' | 'items-end' | 'items-end-safe' | 'items-center' | 'items-center-safe' | 'items-baseline' | 'items-baseline-last' | 'items-stretch', //specify how to align child blocks 
-        gap?: string, // specify gap size
-        width?: string, // specify block width
+        marker_path?: string // specify path to the marker intended for use, strongly recommend use of .svg to prevent unpredictable behavior
+        tw_marker_padding?: string, //specify padding around marker
+        tw_marker_background?: string, //specify background color of marker block
+        tw_marker_border_radius?: string, //specify radius of marker block
+        tw_marker_border_color?: string, //specify border color of marker block
+        tw_marker_border_width?: string, //specify border width of marker block
+        marker_width?: number, //specify width of marker
+        marker_height?: number, //specify height of marker
+        marker_viewbox?: string,
+        marker_path_props?: Vector[],
+        marker_fill?: string,
+        tw_position?: 'relative'|'absolute'|'fixed'|'static'|'sticky', //specify which utility class for controlling how block is positioned for your use case.
+        tw_flex_direction?: 'flex-row' | 'flex-row-reverse' | 'flex-col' | 'flex-col-reverse',
+        tw_padding?: string, // specify padding around annotation block
+        tw_align?: 'items-start' | 'items-end' | 'items-end-safe' | 'items-center' | 'items-center-safe' | 'items-baseline' | 'items-baseline-last' | 'items-stretch', //specify how to align child blocks 
+        tw_gap?: string, // specify gap size
+        tw_width?: string, // specify block width
         reverse?: boolean // specify to reverse the order of annotation
+        text_style_bindings?: {},
+        marker_style_bindings?: {}
     }>(),{
         text_value: 'Camel Toe',
         text_as: 'p',
-        text_classes: '',
-        marker_path: null,
-        marker_padding: 'p-0',
-        marker_background: 'bg-transparent',
-        marker_border_radius: 'rounded-full',
-        marker_border_color: 'border-transparent',
-        marker_border_width: 'border-0',
-        marker_width: 'w-6',
-        marker_height: 'h-6',
-        position: 'relative',
-        flex_direction: 'flex-row',
-        padding: 'p-0',
-        align: 'items-baseline',
-        gap: 'gap-2',
-        width: 'w-fit',
+        tw_text_classes: '',
+        tw_marker_padding: 'p-0',
+        tw_marker_background: 'bg-transparent',
+        tw_marker_border_radius: 'rounded-full',
+        tw_marker_border_color: 'border-transparent',
+        tw_marker_border_width: 'border-0',
+        marker_width: 42,
+        marker_height: 42,
+        tw_position: 'relative',
+        tw_flex_direction: 'flex-row',
+        tw_padding: 'p-0',
+        tw_align: 'items-baseline',
+        tw_gap: 'gap-2',
+        tw_width: 'w-fit',
         reverse: false
     });
 
-    const rootClasses = 'flex';
-
-    const joinedrootClasses = twJoin(rootClasses, props.position, props.flex_direction, props.padding, props.align, props.gap, props.width)
+    const rootClasses = computed(() => twJoin('flex', props.tw_position, props.tw_flex_direction, props.tw_padding, props.tw_align, props.tw_gap, props.tw_width) );
 </script>
 
 <template>
-    <div :class="joinedrootClasses">
-        <MarkerAffix v-if="!props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
+    <div :class="rootClasses">
+        <MarkerAffix v-if="!props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :tw_padding="props.tw_marker_padding" :tw_border_radius="props.tw_marker_border_radius" :tw_border_color="props.tw_marker_border_color" :tw_border_width="props.tw_marker_border_width" :tw_background="props.tw_marker_background" :view-box="props.marker_viewbox" :path_props="props.marker_path_props" :fill="props.marker_fill" :style_bindings="props.marker_style_bindings" />
         <div>
-            <TextBlock :label="props.text_value" :as="props.text_as" :classes="props.text_classes"/>
+            <TextBlock :label="props.text_value" :as="props.text_as" :tw_classes="props.tw_text_classes" :style_bindings="props.text_style_bindings"/>
         </div>
-        <MarkerAffix v-if="props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :padding="props.marker_padding" :border_radius="props.marker_border_radius" :border_color="props.marker_border_color" :border_width="props.marker_border_width" :background="props.marker_background" />
+        <MarkerAffix v-if="props.reverse" :path="props.marker_path" :marker_width="props.marker_width" :marker_height="props.marker_height" :tw_padding="props.tw_marker_padding" :tw_border_radius="props.tw_marker_border_radius" :tw_border_color="props.tw_marker_border_color" :tw_border_width="props.tw_marker_border_width" :tw_background="props.tw_marker_background" :view-box="props.marker_viewbox" :path_props="props.marker_path_props" :fill="props.marker_fill" :style_bindings="props.marker_style_bindings" />
     </div>
 </template>
 
