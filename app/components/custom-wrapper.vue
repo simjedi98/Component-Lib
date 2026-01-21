@@ -31,43 +31,46 @@
         if(!props.as_button) return;
         
         tweens.morphvector_std('#path-vec-1', `M 0 0 H ${dim.value.x -8} V 1 H 1 V 8 H 0 z`, 0.5);
-        tweens.morphvector_std('#path-vec-2', `M 0 0 H 1 V ${dim.value.y - 9} H 8 V ${dim.value.y - 8} H 0 z`, 0.5);
+        tweens.morphvector_std('#path-vec-2', `M 0 0 H 8 V -1 H 1 V ${8 - dim.value.y} H 0 z`, 0.5);
         tweens.morphvector_std('#path-vec-3', `M 0 0 H 8 V ${dim.value.x -8} H 7 V 1 H 0 z`, 0.5);
-        tweens.morphvector_std('#path-vec-4', `M 0 8 H ${dim.value.x - 8} V 0 H ${dim.value.x - 9} V 7 H 0 z`, 0.5);
+        tweens.morphvector_std('#path-vec-4', `M 0 -8 H -1 V -1 H ${8 - dim.value.x} V 0 H 0 z`, 0.5);
     }
 
     const hoveroff = () => {
         if(!props.as_button) return;
 
-        tweens.morphvector_std('#path-vec-1', `M 0 0 H 8 V 1 H 1 V 8 H 0 z`, 0.5);
-        tweens.morphvector_std('#path-vec-2', `M 0 ${dim.value.y - 16} H 1 V ${dim.value.y - 9} H 8 V ${dim.value.y - 8} H 0 z`, 0.5);
-        tweens.morphvector_std('#path-vec-3', `M 0 0 H 8 V 8 H 7 V 1 H 0 z`, 0.5);
-        tweens.morphvector_std('#path-vec-4', `M ${dim.value.x - 16} 8 H ${dim.value.x - 8} V 0 H ${dim.value.x - 9} V 7 H ${dim.value.x - 16} z`, 0.5);
+        tweens.morphvector_std('#path-vec-1', 'M 0 0 H 8 V 1 H 1 V 8 H 0 z', 0.5);
+        tweens.morphvector_std('#path-vec-2', 'M 0 0 H 8 V -1 H 1 V -8 H 0 z', 0.5);
+        tweens.morphvector_std('#path-vec-3', 'M 0 0 H 8 V 8 H 7 V 1 H 0 z', 0.5);
+        tweens.morphvector_std('#path-vec-4', 'M 0 -8 H -1 V -1 H -8 V 0 H 0 z', 0.5);
     }
 
-    onMounted(() => {
-        dim.value.x = size.width.value;
-        dim.value.y = size.height.value;
+    watch(size.width, async (newVal) => {
+        dim.value.x = newVal === 0 ? 8 : Math.ceil(newVal);
+    });
+
+    watch(size.height, async (newVal) => {
+        dim.value.y = newVal === 0 ? 8 : Math.ceil(newVal);
     });
 
 </script>
 
 <template>
-    <div :class="rootClasses">
-        <div :class="wrapperClasses" @mouseenter="hoveron" @mouseleave="hoveroff" ref="wrapper" >
+    <div :class="rootClasses" @mouseenter="hoveron" @mouseleave="hoveroff" ref="wrapper">
+        <div :class="wrapperClasses" >
             <slot />
         </div>
         <div class="absolute top-0 left-0">
             <VectorRenderer :width="dim.x - 8" :height="8" :view-box="`0 0 ${dim.x - 8} 8`" fill="none" :paths="[{id: 'path-vec-1', d: 'M 0 0 H 8 V 1 H 1 V 8 H 0 z', fill: props.color, stroke: props.color, strokeWidth: 0.25, opacity: 1}]" />
         </div>
         <div class="absolute bottom-0 left-0">
-            <VectorRenderer :width="8" :height="dim.y - 8" :view-box="`0 0 8 ${dim.y - 8}`" fill="none" :paths="[{id: 'path-vec-2', d: `M 0 ${dim.y - 16} H 1 V ${dim.y - 9} H 8 V ${dim.y - 8} H 0 z`, fill: props.color, stroke: props.color, strokeWidth: 0.25, opacity: 1}]" />
+            <VectorRenderer :width="8" :height="dim.y - 8" :view-box="`0 ${8 - dim.y} 8 ${dim.y - 8}`" fill="none" :paths="[{id: 'path-vec-2', d: 'M 0 0 H 8 V -1 H 1 V -8 H 0 z', fill: props.color, stroke: props.color, strokeWidth: 0.25, opacity: 1}]" />
         </div>
         <div class="absolute top-0 right-0">
             <VectorRenderer :width="8" :height="dim.y - 8" :view-box="`0 0 8 ${dim.y - 8}`" fill="none" :paths="[{id: 'path-vec-3', d: 'M 0 0 H 8 V 8 H 7 V 1 H 0 z', fill: props.color, stroke: props.color, strokeWidth: 0.25, opacity: 1}]" />
         </div>
         <div class="absolute bottom-0 right-0">
-            <VectorRenderer :width="dim.x - 8" :height="8" :view-box="`0 0 ${dim.x - 8} 8`" fill="none" :paths="[{id: 'path-vec-4', d: `M ${dim.x - 16} 8 H ${dim.x - 8} V 0 H ${dim.x - 9} V 7 H ${dim.x - 16} z`, fill: props.color, stroke: props.color, strokeWidth: 0.25, opacity: 1}]" />
+            <VectorRenderer :width="dim.x - 8" :height="8" :view-box="`${8 - dim.x} -8 ${dim.x - 8} 8`" fill="none" :paths="[{id: 'path-vec-4', d: 'M 0 -8 H -1 V -1 H -8 V 0 H 0 z', fill: props.color, stroke: props.color, strokeWidth: 0.25, opacity: 1}]" />
         </div>
     </div>
 </template>

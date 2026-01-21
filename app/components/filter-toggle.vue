@@ -13,6 +13,7 @@
         custom?: boolean,
         default_color?: string,
         hover_color?: string,
+        active_color?: string
         text_classes?: string
     }>(), {
         label: 'Filter',
@@ -24,6 +25,7 @@
         custom: false,
         default_color: '#808080',
         hover_color: '#333333',
+        active_color: '#FA002A',
         text_classes: ''
     });
 
@@ -39,7 +41,13 @@
 
     const hoveron = () => tweens.changeaccent_std(color, props.hover_color, 0.5);
 
-    const hoveroff = () => tweens.changeaccent_std(color, props.default_color, 0.5);
+    const hoveroff = () => tweens.changeaccent_std(color, model.value? props.active_color : props.default_color, 0.5);
+
+    watch(model, async (newVal) => {
+
+        tweens.changeaccent_std(color, newVal? props.active_color: props.default_color, 0.5);
+
+    });
 
 </script>
 

@@ -2,6 +2,8 @@
     import { twJoin } from 'tailwind-merge';
 
     type Vector = {
+        id?: string,
+        d?: string,
         fill?: string,
         stroke?: string,
         strokeWidth?: number,

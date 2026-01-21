@@ -65,7 +65,7 @@
     <div :class="joinedrootClasses">
         <AnnotatedText :align="props.annotation_block_alignment" :flex_direction="props.annotation_block_flex_direction" :reverse="props.annotation_block_reverse" :text_classes="mergedheadingClasses" :text_as="props.heading_as" :text_value="props.heading_value" :marker_path="props.annotation_path" :marker_padding="props.annotation_padding" :marker_background="props.annotation_background" :marker_border_radius="props.annotation_border_radius" :marker_border_color="props.annotation_border_color" :marker_border_width="props.annotation_border_width" :marker_width="props.annotation_width" :marker_height="props.annotation_height" :width="props.header_width" />
         <div :class="mergedbodyWrapperClass" v-if="props.summary_value">
-            <TextBlock :classes="mergedsummaryClasses" :label="props.summary_value" />
+            <TextBlock :tw_classes="mergedsummaryClasses" :label="props.summary_value" />
         </div>
     </div>
 </template>

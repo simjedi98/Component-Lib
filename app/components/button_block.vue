@@ -45,7 +45,7 @@
 
 <template>
     <component :is="props.as" :class="joinedrootClasses" @mouseenter="onhoveron" @mouseleave="onhoveroff" >
-        <TextBlock :classes="props.text_classes" :label="props.value" />
+        <TextBlock :tw_classes="props.text_classes" :label="props.value" />
     </component>
 </template>
 

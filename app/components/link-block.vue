@@ -29,11 +29,10 @@
         tw_font_weight: 'font-normal'
     });
 
-    const accent = ref({accent: props.default_color});
-    const activeaccent = ref({accent: props.default_color});
     const route = useRoute();
     const isActive = computed(() => (route.path === props.url) );
 
+    const accent = ref({accent: isActive.value? props.active_color : props.default_color});
 
     const rootClasses = computed(() => twJoin('cursor-pointer', props.tw_text_decoration, props.tw_position, props.tw_padding, props.tw_font_family, props.tw_font_size, props.tw_font_weight) );
 
@@ -42,18 +41,11 @@
     }
 
     const onhoveroff = () => {
-        const tween = tweens.changeaccent_std(accent, activeaccent.value.accent, 0.5);
+        const tween = tweens.changeaccent_std(accent, isActive.value? props.active_color : props.default_color, 0.5);
     }
 
-    watch(isActive, async (newVal) => {
-        if(newVal) {
-            activeaccent.value.accent = props.active_color;
-            const tween = tweens.changeaccent_std(accent, activeaccent.value.accent, 0.5);
-        } else {
-            activeaccent.value.accent = props.default_color;
-            const tween = tweens.changeaccent_std(accent, activeaccent.value.accent, 0.5);
-        }
-    }, {immediate: true});
+    watch(isActive, async (newVal) => newVal? tweens.changeaccent_std(accent, props.active_color, 0.5) : tweens.changeaccent_std(accent, props.default_color, 0.5) );
+
 </script>
 
 <template>

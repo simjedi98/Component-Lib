@@ -54,4 +54,5 @@
         <AnnotatedButton :annotation_reverse="true" annotation_path="././app/assets/icons/close.svg" :annotation_width="24" :annotation_height="24" :annotation_path_props="[{fill: '#fff', stroke: '#fff'}]" background-color="bg-[#0000]" padding="p-0" border_radius="rounded-0" />
     </CustomWrapper>
     <TagBlock :style_bindings="{backgroundColor: color.accent}" text_classes="text-white" />
+    
 </template>

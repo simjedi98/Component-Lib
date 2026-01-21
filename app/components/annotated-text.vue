@@ -48,7 +48,7 @@
         tw_padding: 'p-0',
         tw_align: 'items-baseline',
         tw_gap: 'gap-2',
-        tw_width: 'w-fit',
+        tw_width: '',
         reverse: false
     });
 

@@ -13,6 +13,7 @@
         tw_width?: string,
         tw_text_classes?: string,
         style_bindings?: {}
+        text_style_bindings?: {}
     }>(), {
         value: 'tag block',
         custom: false,
@@ -32,7 +33,7 @@
 
 <template>
     <div :class="rootClasses" :style="props.style_bindings">
-        <TextBlock v-if="!props.custom" :classes="textClasses" :label="props.value" as="p" />
+        <TextBlock v-if="!props.custom" :tw_classes="textClasses" :label="props.value" as="p" :style_bindings="props.text_style_bindings" />
         <slot v-if="props.custom" />
     </div>
 </template>

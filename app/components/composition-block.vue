@@ -17,6 +17,7 @@
         content_font_family?: string, // specify default font family rich text is rendered as
         content_padding?: string // specify padding around rich text
         content_alignment?: 'text-left'|'text-center'|'text-right'|'text-justify'|'text-start'|'text-end', // text alignment direction
+        heading_style_bindings?: {}
     }>(), {
         heading_value: 'Composition Block',
         heading_as: 'h3',
@@ -49,7 +50,7 @@
 <template>
     <div :class="joinedrootClasses">
         <div :class="mergedheadingWrapperClass" v-if="props.heading_value">
-            <TextBlock :classes="mergedheadingClasses" :label="props.heading_value" />
+            <TextBlock :tw_classes="mergedheadingClasses" :label="props.heading_value" :style_bindings="props.heading_style_bindings" />
         </div>
         <div :class="mergedbodyWrapperClass">
             <RichText :color="props.content_color" :font_weight="props.content_font_weight" :font_size="props.content_font_size" :font_family="props.content_font_family" :padding="props.content_padding" :align="props.content_alignment" >

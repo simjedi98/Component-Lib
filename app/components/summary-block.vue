@@ -13,6 +13,8 @@
         body_classes?: string,
         heading_classes?: string, // specify utility classes to be appled to heading text
         summary_classes?: string // specify utility classes to be appled to body text
+        heading_style_bindings?: {},
+        summary_style_bindings?: {}
     }>(), {
         heading_value: 'Summary Block',
         heading_as: 'h3',
@@ -45,10 +47,10 @@
 <template>
     <div :class="joinedrootClasses">
         <div :class="mergedheadingWrapperClass" v-if="props.heading_value">
-            <TextBlock :classes="mergedheadingClasses" :as="props.heading_as" :label="props.heading_value" />
+            <TextBlock :tw_classes="mergedheadingClasses" :as="props.heading_as" :label="props.heading_value" :style_bindings="props.heading_style_bindings" />
         </div>
         <div :class="mergedbodyWrapperClass" v-if="props.summary_value">
-            <TextBlock :classes="mergedsummaryClasses" :label="props.summary_value" />
+            <TextBlock :tw_classes="mergedsummaryClasses" :label="props.summary_value" :style_bindings="props.summary_style_bindings" />
         </div>
     </div>
 </template>
