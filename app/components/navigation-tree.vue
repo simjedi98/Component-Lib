@@ -68,8 +68,10 @@
 <template>
     <div :class="mergedrootClasses">
         <div :class="mergedtreeClasses"></div>
-        <div class="px-4 cursor-pointer" v-for="(node, i) in props.tree" :key="node.value" @click.stop="emit('select', node.value)" >
-            <slot :label="node.label" :node="node" />
+        <div class="px-4 cursor-pointer" v-for="(node, i) in props.tree" :key="node.value" >
+            <div @click.stop="emit('select', node.value)" >
+                <slot :label="node.label" :node="node" />
+            </div>
             <NavigationTree v-if="node.children && (node.value === active || isActiveInSubtree(node, active))" :tree="node.children!" :active="active" :alternate_color="alternate_color" :ovelays="ovelays" :position="position" :tree_top="tree_top" :tree_bottom="tree_bottom" :tree_color="tree_color" :tree_width="tree_width" :display="display" :padding="padding" :gap="gap" @select="emit('select', $event)" >
                 <template #default="slotProps">
                     <slot v-bind="slotProps" />
