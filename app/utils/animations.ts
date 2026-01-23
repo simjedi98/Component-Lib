@@ -16,6 +16,14 @@ export class tweens {
         });
     }
 
+    static deltay_std(selector: any, target: string, dt: number) {
+        return gsap.to(selector.value, {
+            dy: target,
+            duration: dt,
+            ease: "power2.out"
+        });
+    }
+
     static changealpha_std(selector: any, target: number, dt: number) {
         return gsap.to(selector.value, {
             opacity: target,
