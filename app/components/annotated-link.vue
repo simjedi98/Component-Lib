@@ -81,11 +81,11 @@
 <template>
    <NuxtLink v-if="props.as === 'nuxt'" :class="rootClasses" :to="props.url" @mouseenter="onhoveron" @mouseleave="onhoveroff" >
       <VectorRenderer :path="props.annotation_path" :width="props.annotation_width" :height="props.annotation_height" :view-box="props.annotation_viewBox" :fill="props.annotation_fill" :paths="paths" />
-      <TextBlock :as="'span'" :label="props.label" :tw_classes="textClasses" :style_bindings="{color: accent.accent}" />
+      <TextBlock v-if="props.label" :as="'span'" :label="props.label" :tw_classes="textClasses" :style_bindings="{color: accent.accent}" />
    </NuxtLink>
     <a v-if="props.as === 'a'" :class="rootClasses" :href="props.url" @mouseenter="onhoveron" @mouseleave="onhoveroff" target="_blank" rel="noopener" >
       <VectorRenderer :path="props.annotation_path" :width="props.annotation_width" :height="props.annotation_height" :view-box="props.annotation_viewBox" :fill="props.annotation_fill" :paths="paths" />
-      <TextBlock :as="'span'" :label="props.label" :tw_classes="textClasses" :style_bindings="{color: accent.accent}" />
+      <TextBlock v-if="props.label" :as="'span'" :label="props.label" :tw_classes="textClasses" :style_bindings="{color: accent.accent}" />
     </a>
 </template>
 
