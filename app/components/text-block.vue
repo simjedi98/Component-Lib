@@ -12,7 +12,7 @@
         tw_classes: ''
     });
 
-    const baseClasses =  computed(() => twMerge('relative text-base md:text-xl lg:text-xl text-black dark:text-white font-normal leading-5.5 md:leading-6.5 lg:leading-6.5', props.tw_classes) );
+    const baseClasses =  computed(() => twMerge('relative text-sm md:text-base lg:text-xl text-black dark:text-white font-normal leading-5 md:leading-5.5 lg:leading-6.5', props.tw_classes) );
 
 </script>
 

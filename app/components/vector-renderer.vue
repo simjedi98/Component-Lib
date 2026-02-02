@@ -17,12 +17,12 @@
     }
 
     const props = defineProps<{
-        path?: string,
-        fill?: string,
-        width?: number,
-        height?: number,
-        viewBox?: string,
-        paths?: Vector[]
+        path?: string, // path to svg file
+        fill?: string, // fill color of svg element
+        width?: number, // width of svg element
+        height?: number, // height of svg element
+        viewBox?: string, // view-box of svg element
+        paths?: Vector[] // properties of the vector's path element
     }>();
     
     const {data} : any = await useFetch<ParsedSVG | null>('/api/getvectordata', {query: {path: props.path}, immediate: !!props.path});

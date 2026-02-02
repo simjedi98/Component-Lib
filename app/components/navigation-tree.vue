@@ -22,23 +22,23 @@
         active: string,
         alternate_color?: boolean,
         ovelays?: Overlay,
-        tree_top?: string,
-        tree_bottom?: string,
-        tree_color?: string,
-        tree_width?: string,
-        position?: 'relative'|'absolute'|'fixed'|'static'|'sticky'|'', //specify which utility class for controlling how block is positioned
-        display?: string
-        padding?: string, // padding around text
-        gap?: string
+        tw_tree_top?: string,
+        tw_tree_bottom?: string,
+        tw_tree_color?: string,
+        tw_tree_width?: string,
+        tw_position?: 'relative'|'absolute'|'fixed'|'static'|'sticky'|'', //specify which utility class for controlling how block is positioned
+        tw_display?: string
+        tw_padding?: string, // padding around text
+        tw_gap?: string
     }>(),{
-        position: '',
-        display: '',
-        padding: '',
-        gap: '',
-        tree_top: '',
-        tree_bottom: '',
-        tree_color: '',
-        tree_width: ''
+        tw_position: '',
+        tw_display: '',
+        tw_padding: '',
+        tw_gap: '',
+        tw_tree_top: '',
+        tw_tree_bottom: '',
+        tw_tree_color: '',
+        tw_tree_width: ''
     });
 
     const emit = defineEmits<{
@@ -61,8 +61,8 @@
     const rootClasses = 'relative flex flex-col gap-1 w-full';
     const treeClasses = 'absolute left-0 top-0 bottom-0 w-0.25 bg-[#00000000]';
 
-    const mergedrootClasses = twMerge(rootClasses, props.position, props.display, props.padding, props.gap);
-    const mergedtreeClasses = twMerge(treeClasses, props.tree_top, props.tree_bottom, props.tree_color, props.tree_width);
+    const mergedrootClasses = twMerge(rootClasses, props.tw_position, props.tw_display, props.tw_padding, props.tw_gap);
+    const mergedtreeClasses = twMerge(treeClasses, props.tw_tree_top, props.tw_tree_bottom, props.tw_tree_color, props.tw_tree_width);
 </script>
 
 <template>
@@ -72,7 +72,7 @@
             <div @click.stop="emit('select', node.value)" >
                 <slot :label="node.label" :node="node" />
             </div>
-            <NavigationTree v-if="node.children && (node.value === active || isActiveInSubtree(node, active))" :tree="node.children!" :active="active" :alternate_color="alternate_color" :ovelays="ovelays" :position="position" :tree_top="tree_top" :tree_bottom="tree_bottom" :tree_color="tree_color" :tree_width="tree_width" :display="display" :padding="padding" :gap="gap" @select="emit('select', $event)" >
+            <NavigationTree v-if="node.children && (node.value === active || isActiveInSubtree(node, active))" :tree="node.children!" :active="active" :alternate_color="alternate_color" :ovelays="ovelays" :tw_position="props.tw_position" :tw_tree_top="props.tw_tree_top" :tw_tree_bottom="props.tw_tree_bottom" :tw_tree_color="props.tw_tree_color" :tw_tree_width="props.tw_tree_width" :display="props.tw_display" :tw_padding="props.tw_padding" :tw_gap="props.tw_gap" @select="emit('select', $event)" >
                 <template #default="slotProps">
                     <slot v-bind="slotProps" />
                 </template>

@@ -37,7 +37,7 @@
     <AnnotatedSummaryBlock direction="flex-row" annotation_block_alignment="items-baseline" header_classes="w-3/10" heading_classes="text-base text-blue-700 leading-5.5 font-medium" heading_value="Trusties:" />
     <br>
     <FilterToggle v-model="filters.featured" />
-    <NavigationTree :tree="tree" tree_color="bg-[#9EA6BA]" tree_bottom="bottom-3" :active="activenode" @select="v => activenode = v" >
+    <NavigationTree :tree="tree" tw_tree_color="bg-[#9EA6BA]" tw_tree_bottom="bottom-3" :active="activenode" @select="v => activenode = v" >
         <template #default="{label, node}">
             <div class="relative flex w-full px-2.5 items-center">
                 <div class="absolute left-[-15px]">
@@ -51,8 +51,8 @@
     </NavigationTree>
     <br>
     <CustomWrapper :as_button="true" tw_padding="py-1 px-5">
-        <AnnotatedButton :annotation_reverse="true" annotation_path="././app/assets/icons/close.svg" :annotation_width="24" :annotation_height="24" :annotation_path_props="[{fill: '#fff', stroke: '#fff'}]" background-color="bg-[#0000]" padding="p-0" border_radius="rounded-0" />
+            <AnnotatedButton :annotation_reverse="true" annotation_path="././app/assets/icons/close.svg" :annotation_width="24" :annotation_height="24" :annotation_path_props="[{fill: '#fff', stroke: '#fff'}]" tw_backgroundColor="bg-[#0000]" tw_padding="p-0" tw_border_radius="rounded-0" />
     </CustomWrapper>
-    <TagBlock :style_bindings="{backgroundColor: color.accent}" text_classes="text-white" />
+    <TagBlock :style_bindings="{backgroundColor: color.accent}" tw_text_classes="text-white" />
     
 </template>

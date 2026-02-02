@@ -41,21 +41,26 @@ Do **not** use `text-block` when:
 
 ## Props
 
-| Prop    | Type | Default | Description |
-|--------|------|---------|-------------|
+| Prop | Type | Default | Description |
+|-----|------|---------|-------------|
 | `label` | `string` | `"Hello world!"` | Text value to be rendered |
 | `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6' \| 'p' \| 'span' \| 'div'` | `'p'` | HTML tag used for rendering |
-| `classes` | `string` | `""` | Tailwind utility classes for styling overrides |
+| `tw_classes` | `string` | `""` | Tailwind utility classes for styling overrides |
+| `style_bindings` | `object` | `{}` | Inline style bindings for dynamic or reactive styling |
 
 ---
 
 ## Styling Rules
 - Uses Tailwind CSS utilities
 - Default styles are defined internally
-- Styling overrides are passed via the `classes` prop
+- Styling overrides are passed via the `tw_classes` prop
 - Conflicting utilities are resolved using `tailwind-merge`
+- Inline styles may be applied via `style_bindings` when utility classes are insufficient
 - No reliance on class order for correctness
 
 ### Base Classes
 ```txt
-relative text-base text-black font-normal
+relative text-sm md:text-base lg:text-xl
+text-black dark:text-white
+font-normal
+leading-5 md:leading-5.5 lg:leading-6.5
