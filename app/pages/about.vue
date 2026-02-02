@@ -2,9 +2,10 @@
     const page = ref<number>(1);
     const validators = reactive({
         email: true,
+        message: true
     });
 
-    const values = reactive({email: ''});
+    const values = reactive({email: '', message: ''});
 
     const color = ref({accent: '#0000'});
 
@@ -20,6 +21,7 @@
     <AnnotatedText />
     <TextBlock :label="values.email" tw_classes="font-medium text-[#666] text-2xt" />
     <ExpandableCard src="/graphics/sergio-velandia-saa.webp"/>
+    <TextAreaField tw_background="bg-white" tw_label_classes="text-white" tw_error_classes="text-xs md:text-xs lg:text-xs text-red-500 leading-4.5" tw_width="w-1/2" v-model:validator="validators.message" v-model:value="values.message" />
     <PaginationStd :count="3" :page="page" @change="v => page = v"/>
 </template>
 
