@@ -17,7 +17,7 @@
         color?: string,
         tw_text_classes?: string
     }>(), {
-        seperator: '././app/assets/icons/arrow.svg',
+        seperator: 'icons/arrow.svg',
         tw_position: 'relative',
         tw_gap: 'gap-4'
     });

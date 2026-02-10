@@ -13,7 +13,7 @@
             <ProgressBar :progress="75"/>
             <NavLinkBlock :links="[{label: 'home', url: '/', as: 'nuxt'},{label: 'about', url: '/about', as: 'nuxt'},{label: 'visit our page', url: 'https://www.instagram.com/katanaboy_sim/', as: 'a'}]" />
             <slot />
-            <AnnotatedLink url="/" label="home" :annotation_width="18" :annotation_height="18" annotation_path="././app/assets/icons/close.svg" />
+            <AnnotatedLink url="/" label="home" :annotation_width="18" :annotation_height="18" annotation_path="icons/close.svg" />
         </div>
     </div>
 </template>

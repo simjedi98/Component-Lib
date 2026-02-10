@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
 import { readFileSync } from 'fs';
+import { resolve } from 'pathe';
 
 type Vector = {
   id: string
@@ -26,7 +27,10 @@ const normalize = (value: any, fallback: string | number) => {
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  const path = query.path;
+  const filename = query.path;
+
+  const dir = resolve(process.cwd(), 'public');
+  const path = resolve(dir, filename);
 
   const svg = readFileSync(path, 'utf-8');
   const $ = cheerio.load(svg, {xml: true});

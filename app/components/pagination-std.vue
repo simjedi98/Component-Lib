@@ -43,7 +43,7 @@ import { twMerge } from 'tailwind-merge';
 <template>
     <div :class="rootClasses">
         <div class="relative p-2 border border-white rounded-full cursor-pointer" @click.stop="emit('change', page + 1 > props.count ? 1 : page + 1)">
-            <VectorRenderer path="././app/assets/icons/arrow.svg" :width="18" :height="18" :paths="[{fill: props.color, stroke: props.color}]" />
+            <VectorRenderer path="icons/arrow.svg" :width="18" :height="18" :paths="[{fill: props.color, stroke: props.color}]" />
         </div>
         <div class="relative flex flex-col h-full gap-4 items-center">
             <TextBlock :as="'div'" :label="`${props.page > 9? props.page : '0' + props.page}`"  :style_bindings="{color: props.color}"/>
@@ -51,7 +51,7 @@ import { twMerge } from 'tailwind-merge';
             <TextBlock :as="'div'" :label="`${props.count > 9 ? props.count : '0' + props.count}`" :style_bindings="{color: props.color}" />
         </div>
         <div class="relative p-2 border border-white rounded-full cursor-pointer" @click.stop="emit('change', page - 1 < 1 ? props.count : page - 1)">
-            <VectorRenderer path="././app/assets/icons/arrow.svg" :width="18" :height="18" :paths="[{fill: props.color, stroke: props.color}]" class="rotate-180" />
+            <VectorRenderer path="icons/arrow.svg" :width="18" :height="18" :paths="[{fill: props.color, stroke: props.color}]" class="rotate-180" />
         </div>
     </div>
 </template>
