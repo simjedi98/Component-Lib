@@ -8,6 +8,14 @@ gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(MorphSVGPlugin);
 
 export class tweens {
+    static deltax_int(selector: any, target: number, dt: number) {
+        return gsap.to(selector.value, {
+            dx: target,
+            duration: dt,
+            ease: "power2.out"
+        });
+    }
+
     static deltax_std(selector: any, target: string, dt: number) {
         return gsap.to(selector.value, {
             dx: target,
