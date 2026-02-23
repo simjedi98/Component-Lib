@@ -15,21 +15,22 @@
             duration.value.end = 0;
             duration.value.duration = 0;
             duration.value.start = parseInt(performance.now().toFixed(0));
+            displacement.value.dx = 0;
         },
         onSwipe(e) {
-            displacement.value.dx = displacement.value.dy + (swipeprops.distanceX.value / size.value!) * 100
+            displacement.value.dx = (swipeprops.distanceX.value / size.value!) * -100
         },
         onSwipeEnd(e, direction) {
             duration.value.end = parseInt(performance.now().toFixed(0));
             duration.value.duration = duration.value.end - duration.value.start;
             duration.value.speed = parseFloat( (swipeprops.distanceX.value / duration.value.duration).toFixed(2) );
 
-            if(((displacement.value.dx / 100) - Math.trunc((displacement.value.dx / 100))) > 0.35) {
-                tweens.deltax_int(displacement,duration.value.speed > 3.2 ? Math.ceil(displacement.value.dx / 100) * 100 + 100 : Math.ceil(displacement.value.dx / 100) * 100, 0.5);
-                displacement.value.dy += duration.value.speed > 3.2 ? 200 : 100;
+            if(((Math.abs(displacement.value.dx) / 100)) > 0.35) {
+                const n = displacement.value.dx > 0? 1: -1;
+                tweens.deltax_int(displacement,Math.abs(duration.value.speed) > 3.2 ? ((Math.ceil(Math.abs(displacement.value.dx) / 100) * 100) + 100) * n : (Math.ceil(Math.abs(displacement.value.dx) / 100) * 100) * n, 0.5);
             } else {
-                tweens.deltax_int(displacement,duration.value.speed > 1.5 ? Math.ceil(displacement.value.dx / 100) * 100 : Math.floor(displacement.value.dx / 100) * 100, 0.5);
-                displacement.value.dy += duration.value.speed > 1.5 ? 100 : 0;
+                const n = displacement.value.dx > 0? 1: -1;
+                tweens.deltax_int(displacement,Math.abs(duration.value.speed) > 1.5 ? (Math.ceil(Math.abs(displacement.value.dx) / 100) * 100) * n : (Math.floor(Math.abs(displacement.value.dx) / 100) * 100) * n , 0.5);
             }
         },
     });
